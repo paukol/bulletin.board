@@ -1,4 +1,38 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .postCard {
+    width: 60%;
+    margin: 10px;
+    background-color: #FAFAF1;
+    padding: 10px;
+    border: #a7a7a7 solid;
+    border-radius: 5px;
+
+    .image {
+      width: 40%;
+      height: 30%;
+    }
+    .title {
+      font-size: 40px;
+      color: black;
+    }
+    .about {
+      font-size: 18px;
+    }
+    .info {
+      font-size: 16px;
+    }
+  }
+  
+  button{
+    a {
+    text-decoration: none;
+    }   
+  }
+}

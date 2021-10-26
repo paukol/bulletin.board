@@ -1,4 +1,13 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  .toolbar {
+    justify-content: space-between;
+
+    .link {
+      color: white;
+      padding-left: 50px;
+      text-decoration: none;
+    }
+  }
+}
