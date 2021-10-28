@@ -18,8 +18,9 @@ const Component = ({className, postOne, editPost, user}) => {
   const submitForm = (event) => {
     event.preventDefault();
     if(post.title.length > 1 && post.content.length > 1 && post.email){
-      post.updateDate = new Date().toISOString();
+      post.updateDate = new Date();
       editPost(post);
+
 
       setPost({
         id: '',

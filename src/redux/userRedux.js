@@ -20,7 +20,6 @@ export const logout = payload => ({ payload, type: LOGOUT});
 export const reducer = (statePart = initialState, action = {}) => {
   switch (action.type) {
     case LOGIN: {
-      console.log('is logged in');
       return {
         ...statePart,
         logged: true,
@@ -29,7 +28,6 @@ export const reducer = (statePart = initialState, action = {}) => {
       };
     }
     case LOGOUT: {
-      console.log('is logged out');
       return {
         ...statePart,
         logged: false,
@@ -37,7 +35,7 @@ export const reducer = (statePart = initialState, action = {}) => {
         email: 'test@test.pl',
       };
     }
-
+ 
     default:
       return statePart;
   }
