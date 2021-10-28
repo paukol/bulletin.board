@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getAll } from '../../../redux/postsRedux';
+import { getAll, fetchPublished } from '../../../redux/postsRedux';
 import { getUser } from '../../../redux/userRedux';
 
 import styles from './Homepage.module.scss';
@@ -13,34 +13,36 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import IconButton from '@material-ui/core/IconButton';
+import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Fab from '@material-ui/core/Fab';
 
 
-const Component = ({ user, postsAll }) => {
+const Component = ({ postsAll, fetchPublishedPosts, user }) => {
+  React.useEffect(() => {
+    fetchPublishedPosts();
+  }, []);
+
   return (
     <div className={styles.root}>
       <div className={styles.card}>
         {postsAll.map((post) => (
           <Card key={post.id} className={styles.cardItem}>
             <CardHeader
-              action={
-                <IconButton aria-label='settings'>
-                  <MoreVertIcon />
-                </IconButton>
+              avatar={
+                <Avatar aria-label='recipe' className={styles.avatar}>
+                  R
+                </Avatar>
               }
               title={post.title}
-              subheader={post.publicationDate}
             />
 
-            <CardActionArea>
+            <CardActionArea
+              href={`/post/${post._id}`}>
               <CardMedia
                 className={styles.image}
                 component='img'
-                image={post.image}
-                title={post.title}
+                image={post.photo}
               />
               <CardContent>
                 <Typography
@@ -50,17 +52,16 @@ const Component = ({ user, postsAll }) => {
                 >
                 </Typography>
                 <div>
+                <Typography className={styles.author} component='p' variant='subtitle2'>
+                    Author: {post.author}
+                  </Typography>
+                  <Typography className={styles.created} component='p' variant='subtitle2'>
+                    Created: {post.created}
+                  </Typography>
+                  <Typography className={styles.click} component='p' variant='subtitle2'>
+                    Click on card to see more!
+                  </Typography>
                 </div>
-                <Link className={styles.button} to={`/post/${post.id}`}>
-                  <Fab
-                    size='small'
-                    color='secondary'
-                    aria-label='add'
-                    variant='extended'
-                  >
-                    See more
-                  </Fab>
-                </Link>
               </CardContent>
             </CardActionArea>
           </Card>
@@ -84,19 +85,16 @@ const Component = ({ user, postsAll }) => {
 
 Component.propTypes = {
   className: PropTypes.string,
+  fetchPublishedPosts: PropTypes.any,
   postsAll: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
+      _id: PropTypes.string,
       title: PropTypes.string,
-      content: PropTypes.string,
-      publicationDate: PropTypes.string,
-      updateDate: PropTypes.string,
-      email: PropTypes.string,
-      status: PropTypes.string,
-      image: PropTypes.string,
-      price: PropTypes.string,
+      photo: PropTypes.string,
+      author: PropTypes.string,
+      created: PropTypes.string,
       phone: PropTypes.string,
-      location: PropTypes.string,
     })
   ),
   user: PropTypes.object,
@@ -107,7 +105,11 @@ const mapStateToProps = state => ({
   user: getUser(state),
 });
 
-const Container = connect(mapStateToProps)(Component);
+const mapDispatchToProps = (dispatch) => ({
+  fetchPublishedPosts: () => dispatch(fetchPublished()),
+});
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   //Component as Homepage,

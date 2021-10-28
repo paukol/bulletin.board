@@ -61,15 +61,16 @@ const Component = ({ className, children, user, login, logout }) => {
       </FormGroup>
       <AppBar position='static'>
         <Toolbar className={styles.toolbar}>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-            href='/'
-          >
-            <HomeIcon/>
-          </IconButton>
+        <Link to={'/'}>
+            <IconButton
+              edge='start'
+              className={classes.menuButton}
+              color='inherit'
+              aria-label='menu'
+            >
+              <HomeIcon/>
+            </IconButton>
+          </Link>
           <Typography variant='h6' className={classes.title}>
             Bulletin
           </Typography>

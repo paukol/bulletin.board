@@ -1,47 +1,6 @@
 export const initialState = {
   posts: {
-    data: [
-      {
-        id: '1',
-        title: 'House for sale $1.000.000',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et turpis a sapien luctus ullamcorper gravida vel lectus.',
-        date: '20.10.2021',
-        updateDate: '11.11.2021',
-        email: 'johndoe@example.com',
-        status: 'published',
-        image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      },
-      {
-        id: '2',
-        title: 'Room for rent $100',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et turpis a sapien luctus ullamcorper gravida vel lectus.',
-        date: '10.10.2021',
-        updateDate: '20.10.2021',
-        email: 'amandadoe@example.com',
-        status: 'published',
-        image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      },
-      {
-        id: '3',
-        title: 'Apartment for rent $500',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et turpis a sapien luctus ullamcorper gravida vel lectus. Vivamus sed ipsum dapibus, placerat magna in, elementum erat.',
-        date: '20.05.2021',
-        updateDate: '25.10.2021',
-        email: 'johnadoe@example.com',
-        status: 'published',
-        image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      },
-      {
-        id: '4',
-        title: 'House for rent $1000',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et turpis a sapien luctus ullamcorper gravida vel lectus. Vivamus sed ipsum dapibus, placerat magna in, elementum erat.',
-        date: '11.11.2021',
-        updateDate: '23.11.2021',
-        email: 'joedoe@example.com',
-        status: 'published',
-        image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      },
-    ],
+    data: [],
     loading: {
       active: false,
       error: false,

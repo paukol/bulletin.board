@@ -17,20 +17,20 @@ const Component = ({className, postOne, editPost, user}) => {
   }
   const submitForm = (event) => {
     event.preventDefault();
-    if(post.title.length > 1 && post.content.length > 1 && post.email){
-      post.updateDate = new Date();
+    if(post.title.length > 1 && post.text.length > 1 && post.email){
       editPost(post);
 
-
       setPost({
-        id: '',
-        title: '',
-        date: '',
-        content: '',
         email: '',
-        image: '',
-        updateDate: '',
-        status: ''
+        created: '',
+        updated: '',
+        status: '',
+        title: '',
+        text: '',
+        photo: '',
+        price: '',
+        phone: '',
+        location: ''
       });
     } else {
       alert('Please complete all fields');
@@ -47,13 +47,29 @@ const Component = ({className, postOne, editPost, user}) => {
               Title: <input type="text" name="title" value={post.title} onChange={handleChange}></input>
             </label>
             <label className={styles.formInput}>
-              Description: <textarea type="text" name="content" value={post.content} onChange={handleChange}></textarea>
+              Location: <input type="text" name="location" value={post.location} onChange={handleChange}></input>
             </label>
             <label className={styles.formInput}>
-              Email: <input type="text" name="email" value={post.mail} onChange={handleChange}></input>
+              Description: <textarea type="text" name="text" value={post.text} onChange={handleChange}></textarea>
             </label>
             <label className={styles.formInput}>
-              Image: <input type="file" name="image" accept=".png, .gif, .jpg" onChange={handleChange}></input>
+              Price: <input type="text" name="price" value={post.price} onChange={handleChange}></input>
+            </label>
+            <label className={styles.formInput}>
+              Email: <input type="email" name="email" value={post.author} onChange={handleChange}></input>
+            </label>
+            <label className={styles.formInput}>
+              Phone number: <input type="text" name="phone" value={post.phone} onChange={handleChange}></input>
+            </label>
+            <label className={styles.formInput}>
+              Image adress: <input type="text" name="photo" accept=".png, .gif, .jpg" value={post.photo} onChange={handleChange}></input>
+            </label>
+            <label className={styles.formInput}>
+              Status: 
+              <input type="radio" id="new" name="status" value="New" onChange={handleChange}></input>
+              <label htmlFor="new">New, not published</label>
+              <input type="radio" id="published" name="status" value="published" onChange={handleChange}></input>
+              <label htmlFor="published">Published</label>
             </label>
             <button type="submit">Submit</button>
           </form>
@@ -67,19 +83,8 @@ const Component = ({className, postOne, editPost, user}) => {
 };
 
 Component.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
-  postsOne: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      content: PropTypes.string,
-      date: PropTypes.string,
-      updateDate: PropTypes.string,
-      email: PropTypes.string,
-      status: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ),
   user: PropTypes.object,
 };
 
